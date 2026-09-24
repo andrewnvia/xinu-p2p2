@@ -15,6 +15,6 @@ struct	defer	{
 
 extern	struct	defer	Defer;
 
-#define UPRIORITY_QUEUES 4
-#define TIME_ALLOTMENT 5
-#define PRIORITY_BOOST_PERIOD 200
+#define UPRIORITY_QUEUES 3
+#define TIME_ALLOTMENT 100
+#define PRIORITY_BOOST_PERIOD 10000000
