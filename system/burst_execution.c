@@ -12,7 +12,8 @@ void	burst_execution(
       uint32    sleep_duration
     )
 {
-    for (int i = 0; i < number_bursts; i++) {
+    int i;
+    for (i = 0; i < number_bursts; i++) {
         while(proctab[currpid].runtime<burst_duration * (i+1));
         sleepms(sleep_duration);
     }

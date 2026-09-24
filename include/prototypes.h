@@ -633,6 +633,11 @@ extern	pid32	create_user_process(void *, uint32, char *, uint32, ...);
 /* in file burst_execution.c */
 extern	void	burst_execution(uint32, uint32, uint32);
 
+/* in file scheduler.c */
+extern	pid32	scheduler(void);
+extern 	status	userinsert(pid32);
+extern	void 	set_tickets(pid32, uint32);
+
 /* NETWORK BYTE ORDER CONVERSION NOT NEEDED ON A BIG-ENDIAN COMPUTER */
 #define	htons(x)   ( ( 0xff & ((x)>>8) ) | ( (0xff & (x)) << 8 ) )
 #define	htonl(x)   ( (((x)>>24) & 0x000000ff) | (((x)>> 8) & 0x0000ff00) | \

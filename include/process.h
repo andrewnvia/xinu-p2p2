@@ -55,9 +55,11 @@ struct procent {		/* Entry in the process table		*/
 
 	/* PROJECT 2 ENTRIES	*/
 
-	uint32 runtime; 	/* # of ms process has run		*/
-	uint32 turnaroundtime;	/* Turnaround time in ms		*/
-	uint32 num_ctxsw;	/* # of switches to this process	*/
+	uint32	runtime; 	/* # of ms process has run		*/
+	uint32	turnaroundtime;	/* Turnaround time in ms		*/
+	uint32	num_ctxsw;	/* # of switches to this process	*/
+
+	int32	tickets;	/* # of tickets process owns	*/
 	
 };
 
