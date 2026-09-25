@@ -210,8 +210,9 @@ static	void	sysinit()
 	readylist = newqueue();
 
 	/* Create a list for user processes */
-	
-	userlist = newqueue();
+	for (i = 0; i < UPRIORITY_QUEUES; i++) {
+		userlist[i] = newqueue();
+	}
 
 	/* initialize the PCI bus */
 
