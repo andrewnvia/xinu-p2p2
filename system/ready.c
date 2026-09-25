@@ -22,7 +22,7 @@ status	ready(
 
 	prptr = &proctab[pid];
 	prptr->prstate = PR_READY;
-	if (prptr->prprio == -1){
+	if (prptr->prprio == USERPROC){
 		userinsert(pid);
 	} else {
 		insert(pid, readylist, prptr->prprio);

@@ -38,6 +38,9 @@
 
 #define NDESC		5	/* must be odd to make procent 4N bytes	*/
 
+#define USERPROC	-1
+#define BOOSTED		-2
+
 /* Definition of the process table (multiple of 32 bits) */
 
 struct procent {		/* Entry in the process table		*/

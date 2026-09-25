@@ -37,7 +37,7 @@ pid32	create_user_process(
 
 	/* Initialize process table entry for new process */
 	prptr->prstate = PR_SUSP;	/* Initial state is suspended	*/
-	prptr->prprio = -1;	/* Mark with invalid priority	*/
+	prptr->prprio = USERPROC;	/* Mark with invalid priority	*/
 	prptr->prstkbase = (char *)saddr;
 	prptr->prstklen = ssize;
 	prptr->prname[PNMLEN-1] = NULLCH;

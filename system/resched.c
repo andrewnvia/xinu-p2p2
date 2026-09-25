@@ -32,7 +32,7 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 		/* Old process will no longer remain current */
 
 		ptold->prstate = PR_READY;
-		if (ptold->prprio == -1) {
+		if (ptold->prprio == USERPROC) {
 			userinsert(currpid);
 		}
 		else {
