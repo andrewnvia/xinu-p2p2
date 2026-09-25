@@ -53,11 +53,11 @@ dkms.conf
 
 # debug information files
 *.dwo
-compile/.defs
-compile/.vers_num
-compile/version
-system/conf.c
-config/y.tab.c
-config/lex.yy.c
-config/config
-include/conf.h
+xinu-vbox/compile/.defs
+xinu-vbox/compile/.vers_num
+xinu-vbox/compile/version
+xinu-vbox/system/conf.c
+xinu-vbox/config/y.tab.c
+xinu-vbox/config/lex.yy.c
+xinu-vbox/config/config
+xinu-vbox/include/conf.h
