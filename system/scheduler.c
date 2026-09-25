@@ -118,6 +118,6 @@ status	boostprio(void) {
  *  reset_timing  -  Reset the priority upgrade period
  *------------------------------------------------------------------------
  */
-status	reset_timing(void) {
-	return OK;
+void	reset_timing(void) {
+	return;
 }
