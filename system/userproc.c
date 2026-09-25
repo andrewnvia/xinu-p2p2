@@ -56,7 +56,7 @@ pid32	create_user_process(
 	prptr->runtime = 0;
 	prptr->turnaroundtime = 0;
 	prptr->num_ctxsw = 0;
-	prptr->tickets = 0;
+	prptr->uprio = MAX_UPRIO;
 	
 	/* Initialize stack as if the process was called		*/
 

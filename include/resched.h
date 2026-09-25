@@ -18,3 +18,6 @@ extern	struct	defer	Defer;
 #define UPRIORITY_QUEUES 3
 #define TIME_ALLOTMENT 100
 #define PRIORITY_BOOST_PERIOD 10000000
+
+#define MAX_UPRIO (UPRIORITY_QUEUES - 1)
+#define MIN_UPRIO 0

@@ -1,4 +1,4 @@
-/* scheduler.c - scheduler, userinsert, set_tickets */
+/* scheduler.c - scheduler, userinsert */
 #include <xinu.h>
 #include <stdlib.h>
 
@@ -79,19 +79,19 @@ status	userinsert(
 	qid16	curr;			/* Runs through items in a queue*/
 	qid16	prev;			/* Holds previous node index	*/
 	struct	procent *prptr;		/* Ptr to process's table entry	*/
-	int32	tickets;
+	int32	uprio;
 	prptr = &proctab[pid];
-	tickets = prptr->tickets;
+	uprio = prptr->uprio;
 
 	if (isbadpid(pid)) {
 		return SYSERR;
 	}
 
 	curr = firstid(userlist);
-	while (queuetab[curr].qkey > tickets) {
+	while (queuetab[curr].qkey > uprio) {
 		curr = queuetab[curr].qnext;
 	}
-	while (queuetab[curr].qkey == tickets && curr < pid) {
+	while (queuetab[curr].qkey == uprio && curr < pid) {
 		curr = queuetab[curr].qnext;
 	}
 
@@ -100,36 +100,8 @@ status	userinsert(
 	prev = queuetab[curr].qprev;	/* Get index of previous node	*/
 	queuetab[pid].qnext = curr;
 	queuetab[pid].qprev = prev;
-	queuetab[pid].qkey = tickets;
+	queuetab[pid].qkey = uprio;
 	queuetab[prev].qnext = pid;
 	queuetab[curr].qprev = pid;
 	return OK;
-}
-
-/*------------------------------------------------------------------------
- * set_tickets - Changes # tickets for process and replaces position in queue
- *------------------------------------------------------------------------
- */
-void set_tickets(
-	  pid32 	pid, 
-	  uint32 	tickets
-	) 
-{
-	intmask	mask;			/* Saved interrupt mask		*/
-	struct	procent *prptr;		/* Ptr to process's table entry	*/
-
-	mask = disable();
-	if (isbadpid(pid)) {
-		restore(mask);
-		return;
-	}
-	prptr = &proctab[pid];
-	prptr->tickets = tickets;
-	if (prptr->prstate == PR_READY){
-		getitem(pid);
-	}
-	if (prptr->prstate == PR_READY && tickets != 0){
-		userinsert(pid);
-	}
-	restore(mask);
 }

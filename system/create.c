@@ -57,7 +57,7 @@ pid32	create(
 	prptr->runtime = 0;
 	prptr->turnaroundtime = 0;
 	prptr->num_ctxsw = 0;
-	prptr->tickets = -1; /* System process, ignore tickets */
+	prptr->uprio = -1; /* System process, ignore uprio */
 	
 	/* Initialize stack as if the process was called		*/
 
