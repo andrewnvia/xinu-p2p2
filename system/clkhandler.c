@@ -42,9 +42,8 @@ void	clkhandler()
 	}
 
 	if((--countboost) <= 0) {
-		boostprio();
 		countboost = PRIORITY_BOOST_PERIOD;
-		resched();
+		boostprio();
 	}
 
 	

@@ -59,5 +59,50 @@ status	userinsert(
  *------------------------------------------------------------------------
  */
 status	boostprio(void) {
+	struct	procent *prptr;		/* Ptr to process's table entry	*/
+	int i;
+	int prio;
+	qid16	tail, prev, start, end;		/* Tail & previous node indexes	*/
+
+	prptr = &proctab[currpid];
+	if (prptr->prprio == USERPROC) {
+		enqueue(currpid, userlist[prptr->uprio]);
+		prptr->prprio = BOOSTED;
+	}
+
+	for (i = 0; i < NPROC; i++) {
+		prptr = &proctab[i];
+		if (prptr->prstate != PR_FREE
+				&& (prptr->prprio == USERPROC 
+					|| prptr->prprio == BOOSTED)) {
+			prptr->uprio = MAX_UPRIO;
+			prptr->prallotment = 0;
+			prptr->upgrades++;
+		}
+	}
+
+	prio = MAX_UPRIO - 1;
+	for (i = 0; i < MAX_UPRIO; i++) {
+		if(isempty(userlist[prio])) {
+			prio--;
+			continue;
+		}
+		tail = queuetail(userlist[MAX_UPRIO]);
+		prev = queuetab[tail].qprev;
+
+		start = firstid(userlist[prio]);
+		end = lastid(userlist[prio]);
+		queuetab[end].qnext  = tail;	/* Insert just before tail node	*/
+		queuetab[start].qprev  = prev;
+		queuetab[prev].qnext = start;
+		queuetab[tail].qprev = end;
+		queuetab[queuehead(userlist[prio])].qnext = queuetail(userlist[prio]);
+		queuetab[queuetail(userlist[prio])].qprev = queuehead(userlist[prio]);
+		prio--;
+	}
+	
+
+	resched();
+
 	return OK;
 }

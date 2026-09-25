@@ -34,8 +34,9 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 		ptold->prstate = PR_READY;
 		if (ptold->prprio == USERPROC) {
 			userinsert(currpid);
-		}
-		else {
+		} else if (ptold->prprio == BOOSTED) {
+			ptold->prprio = USERPROC;
+		} else {
 			insert(currpid, readylist, ptold->prprio);
 		}
 	}
