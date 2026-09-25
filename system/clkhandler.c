@@ -9,6 +9,7 @@
 void	clkhandler()
 {
 	static	uint32	count1000 = 1000;	/* Count to 1000 ms	*/
+	static	uint32	countboost = PRIORITY_BOOST_PERIOD;
 	struct	procent	*prptr;
 	pid32 i;
 	
@@ -40,6 +41,13 @@ void	clkhandler()
 		}
 	}
 
+	if((--countboost) <= 0) {
+		boostprio();
+		countboost = PRIORITY_BOOST_PERIOD;
+		resched();
+	}
+
+	
 	/* Handle sleeping processes if any exist */
 
 	if(!isempty(sleepq)) {
