@@ -60,7 +60,8 @@ struct procent {		/* Entry in the process table		*/
 	uint32	num_ctxsw;	/* # of switches to this process	*/
 
 	int32	uprio;	/* # of tickets process owns	*/
-	
+	uint32	upgrades;
+	uint32	downgrades;
 };
 
 /* Marker for the top of a process stack (used to help detect overflow)	*/
