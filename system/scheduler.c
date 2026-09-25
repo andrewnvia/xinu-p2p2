@@ -1,4 +1,4 @@
-/* scheduler.c - scheduler, userinsert */
+/* scheduler.c - scheduler, userinsert, boostprio, reset_timing */
 #include <xinu.h>
 #include <stdlib.h>
 
@@ -103,5 +103,21 @@ status	userinsert(
 	queuetab[pid].qkey = uprio;
 	queuetab[prev].qnext = pid;
 	queuetab[curr].qprev = pid;
+	return OK;
+}
+
+/*------------------------------------------------------------------------
+ *  boostprio  -  Increase priority of all user processes
+ *------------------------------------------------------------------------
+ */
+status	boostprio(void) {
+	return OK;
+}
+
+/*------------------------------------------------------------------------
+ *  reset_timing  -  Reset the priority upgrade period
+ *------------------------------------------------------------------------
+ */
+status	reset_timing(void) {
 	return OK;
 }

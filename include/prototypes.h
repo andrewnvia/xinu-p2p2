@@ -636,6 +636,8 @@ extern	void	burst_execution(uint32, uint32, uint32);
 /* in file scheduler.c */
 extern	pid32	scheduler(void);
 extern 	status	userinsert(pid32);
+extern	status	boostprio(void);
+extern 	status	reset_timing(void);
 
 /* NETWORK BYTE ORDER CONVERSION NOT NEEDED ON A BIG-ENDIAN COMPUTER */
 #define	htons(x)   ( ( 0xff & ((x)>>8) ) | ( (0xff & (x)) << 8 ) )
