@@ -59,6 +59,7 @@ pid32	create_user_process(
 	prptr->uprio = MAX_UPRIO;
 	prptr->upgrades = 0;
 	prptr->downgrades = 0;
+	prptr->prallotment = 0;
 	
 	/* Initialize stack as if the process was called		*/
 

@@ -60,6 +60,7 @@ pid32	create(
 	prptr->uprio = -1; /* System process, ignore uprio */
 	prptr->upgrades = 0;
 	prptr->downgrades = 0;
+	prptr->prallotment = 0;
 	
 	/* Initialize stack as if the process was called		*/
 

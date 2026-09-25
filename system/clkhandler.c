@@ -32,6 +32,7 @@ void	clkhandler()
 	prptr = &proctab[currpid];
 	if (prptr->prstate == PR_CURR) {
 		prptr->runtime++;
+		prptr->prallotment++;
 	}
 	
 	for (i = 0; i < NPROC; i++) {
