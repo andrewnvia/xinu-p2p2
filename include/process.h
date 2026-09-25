@@ -59,7 +59,7 @@ struct procent {		/* Entry in the process table		*/
 	uint32	turnaroundtime;	/* Turnaround time in ms		*/
 	uint32	num_ctxsw;	/* # of switches to this process	*/
 
-	int32	uprio;	/* # of tickets process owns	*/
+	int32	uprio;	/* Current priority queue	*/
 	uint32	upgrades;
 	uint32	downgrades;
 	uint32	prallotment;
