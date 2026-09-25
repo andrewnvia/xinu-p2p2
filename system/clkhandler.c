@@ -1,4 +1,4 @@
-/* clkhandler.c - clkhandler */
+/* clkhandler.c - clkhandler, reset_timing */
 
 #include <xinu.h>
 
@@ -9,7 +9,6 @@
 void	clkhandler()
 {
 	static	uint32	count1000 = 1000;	/* Count to 1000 ms	*/
-	static	uint32	countboost = PRIORITY_BOOST_PERIOD;
 	struct	procent	*prptr;
 	pid32 i;
 	
@@ -68,4 +67,14 @@ void	clkhandler()
 		preempt = QUANTUM;
 		resched();
 	}
+}
+
+
+/*------------------------------------------------------------------------
+ *  reset_timing  -  Reset the priority upgrade period
+ *------------------------------------------------------------------------
+ */
+void	reset_timing(void) {
+	countboost = PRIORITY_BOOST_PERIOD;
+	return;
 }

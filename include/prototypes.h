@@ -637,6 +637,8 @@ extern	void	burst_execution(uint32, uint32, uint32);
 extern	pid32	scheduler(void);
 extern 	status	userinsert(pid32);
 extern	status	boostprio(void);
+
+/* in file clkhandler.c */
 extern 	void	reset_timing(void);
 
 /* NETWORK BYTE ORDER CONVERSION NOT NEEDED ON A BIG-ENDIAN COMPUTER */

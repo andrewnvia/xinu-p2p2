@@ -1,4 +1,4 @@
-/* scheduler.c - scheduler, userinsert, boostprio, reset_timing */
+/* scheduler.c - scheduler, userinsert, boostprio */
 #include <xinu.h>
 #include <stdlib.h>
 
@@ -112,12 +112,4 @@ status	userinsert(
  */
 status	boostprio(void) {
 	return OK;
-}
-
-/*------------------------------------------------------------------------
- *  reset_timing  -  Reset the priority upgrade period
- *------------------------------------------------------------------------
- */
-void	reset_timing(void) {
-	return;
 }
